@@ -51,8 +51,8 @@ module Fastlane
                   file.each_line do |line|
                       if line.include? constant_name and foundVersionCode=="false"
                           UI.message(" -> line: (#{line})!")
-                        versionComponents = line.strip.split(' ')
-                        version_code = versionComponents[versionComponents.length-1].tr("\"","")
+                        versionComponents = line.strip.split('=')
+                        version_code = versionComponents[versionComponents.length-1].tr("\"","").strip
                         if new_version_code <= 0
                             new_version_code = version_code.to_i + 1
                         end
